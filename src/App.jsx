@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./App.css";
 import SearchBar from "./componenets/SearchBar/SearchBar";
-// import Display from "./containers/Display/Display";
+import TodaysDate from "./containers/TodaysDate/TodaysDate";
 const api = {
   key: "4d359c0d2e6fab4b2f48f359d1dd6118",
   base: "https://api.openweathermap.org/data/2.5/",
@@ -27,44 +27,14 @@ const App = () => {
     }
 
 
-  const dateBuilder = (d) => {
-    let months = [
-      "January",
-      "February",
-      "March",
-      "April",
-      "May",
-      "June",
-      "July",
-      "August",
-      "September",
-      "October",
-      "November",
-      "December",
-    ];
-    let days = [
-      "Sunday",
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday",
-      "Saturday",
-    ];
-    let day = days[d.getDay()];
-    let date = d.getDate();
-    let month = months[d.getMonth()];
-    let year = d.getFullYear();
-
-    return `${day} ${date} ${month} ${year}`;
-  };
+  
 
   return (
   
       <main>
         <h1>Weather App</h1>
         <h2>Search for todays weather</h2>
-        <div className="date">{dateBuilder(new Date())}</div>
+        <TodaysDate />
         <SearchBar updateSearchText={search} />
         {typeof weather.main != "undefined" ? (
           <div class="text">
