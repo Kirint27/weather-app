@@ -18,7 +18,7 @@ const App = () => {
         .then((res) => res.json())
         .then((result) => {
           setWeather(result);
-          //  setQuery("");
+            setQuery("");
           console.log(result);
         })
         .catch((err) => {
