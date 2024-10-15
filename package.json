@@ -1,6 +1,6 @@
 {
   "name": "weather",
-  "homepage": "http://weather.kirinthapar.co.uk/ ",
+  "homepage": "http://weather.kirinthapar.co.uk/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
