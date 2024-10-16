@@ -1,0 +1,52 @@
+.searchBox {
+    width: 100%; /* Full width on mobile */
+    margin: 0 0 40px;
+}
+
+h2{
+    margin-left: 40%;
+    margin-bottom: 2%;
+    font-size: 20px;
+}
+.searchBox .searchBar {
+    display: block;
+    width: 100%; /* Full width on mobile */
+    padding: 20px;
+    margin-left: 0; /* No margin on mobile */
+    
+    background-color: #ffffff;
+    margin-top: 20px; /* Space from the top */
+    
+    box-shadow: 0px 5px rgba(0, 0, 0, 0.2);
+    
+    color: #313131;
+    font-size: 20px;
+}
+
+/* Media query for larger screens (tablets and laptops) */
+@media only screen and (min-width: 521px) {
+    .searchBox {
+        width: 50%; 
+        margin-left:  30%;/* Increase width for larger screens */
+    }
+
+    .searchBox .searchBar {
+        display: block;
+        width: 80%; /* Full width of the parent .searchBox */
+        padding: 20px;
+  margin: 10% 50% 0% 0; /* Margin left for larger screens */
+        
+        background-color: #ffffff;
+        
+        box-shadow: 0px 5px rgba(0, 0, 0, 0.2);
+        
+        color: #313131;
+        font-size: 20px;
+    }
+
+    h2{
+        margin-left: 40%;
+        margin-bottom: 2%;
+        font-size: 24px;
+    }
+}

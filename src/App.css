@@ -8,60 +8,35 @@ body {
   font-family: "montseratt", sans-serif;
 }
 
+/* Base styles for mobile devices */
 main {
   min-height: 100vh;
-  background-image: url(./images/weather\ .jpg);
   background-repeat: no-repeat;
   padding: 25px;
+  background: url(./images/weather\ .jpg) no-repeat center center/cover;
 }
-
 
 h1 {
-  margin-left: 540px;
+  margin-left: 20px; /* Margin for mobile */
+  color: black;
 }
 
-h2 {
-  margin-left: 500px;
+h3 {
+  margin-left: 25% !important; /* Margin for mobile */
+  color: black;
+  font-size: 18px;
+
+  margin-top: 20px;
 }
 
-.search-box {
-  width: 100%;
-  margin: 0 0 75px;
+.text {
+  margin-left: 20px; /* Margin for mobile */
+  width: 90%; /* Adjust width for mobile */
 }
 
-.search-box .search-bar {
-  display: block;
-  width: 50%;
-  padding: 20px;
-  margin-left: 350px;
-
-  background-color: #ffffff;
-  /* border-radius: 16px 16px 16px 16px; */
-  margin-top: 45px;
-
-  box-shadow: 0px 5px rgba(0, 0, 0, 0.2);
-
-  color: #313131;
-  font-size: 20px;
-}
-.text{
-  margin-left: 450px;
-  width: 40%;
-}
-
-.weather-box {
-  text-align: center;
- background-color: white;
-  border: 5px solid black;
-  border-radius: 5px;
-  margin-right: 50px;
-  
-  /* width: 20px; */
-
-}
- .location {
+.location {
   color: #000000;
-  font-size: 62px;
+  font-size: 40px; /* Font size for mobile */
   font-weight: 500;
   padding-top: 10px;
   margin-bottom: 30px;
@@ -69,64 +44,27 @@ h2 {
   background-size: 10px;
 }
 
-
-
-.description{
+.description {
   font-weight: bold;
-  
-}
- .temp {
-  position: relative;
-  /* display: inline-block; */
-  margin: 30px auto;
-  background-size: 10px;
-
- 
-
-  padding: 15px 25px;
-
-  color: #000000;
-  font-size: 48px;
 }
 
+/* Media query for larger screens (tablets and laptops) */
+@media only screen and (min-width: 501px) {
+  h1 {
+    margin-left: 40%; /* Margin for larger screens */
+  }
+  h3 {
+    margin-left: 0%;
+  }
 
- .feelsLike{
-  position: relative;
-  /* display: inline-block; */
-  margin: 10px 10px;
-
-   background-size: 10px;
-  padding: 10px 5px;
-
-  color: #000000;
-  font-size: 48px;
-}
-
- .maxtemp{
-  position: relative;
-  /* display: inline-block; */
-  margin: 10px 10px;
-
-   background-size: 10px;
-  padding: 10px 5px;
-
-  color: #000000;
-  font-size: 48px;
-}
- .weather {
-  position: relative;
-  /* display: inline-block; */
-  margin: 10px 10px;
-
-  background-size: 10px;
-  padding: 10px 5px;
-
-  color: #000000;
-  font-size: 48px;
-}
-@media only screen and (max-width: 500px) {
-
-  main{
-    width: 100%;
+  .text {
+    margin-left: 30%; /* Margin for larger screens */
+    width: 40%; /* Width for larger screens */
+  }
+  weather {
+    background: none;
+  }
+  .location {
+    font-size: 62px; /* Font size for larger screens */
   }
 }
