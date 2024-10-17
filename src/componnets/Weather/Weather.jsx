@@ -1,39 +1,68 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./Weather.module.scss"; // Ensure this path is correct
 import WeatherCard from "../WeatherCard/WeatherCard";
-const Weather = ({ forecast, weather }) => {
-  // Create icon URL based on the current weather condition code
-  const iconUrl = `https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`;
+
+const Weather = ({ forecast }) => {
+  const [expandedDay, setExpandedDay] = useState(null);
+
+  // Group forecast data by day
+  const groupedForecast = forecast.list.reduce((dailyForecasts, item) => {
+    const date = new Date(item.dt * 1000).toLocaleDateString();
+    if (!dailyForecasts[date]) {
+      dailyForecasts[date] = [];
+    }
+    dailyForecasts[date].push(item);
+    return dailyForecasts;
+  }, {});
+
+  const handleDayClick = (date) => {
+    setExpandedDay(expandedDay === date ? null : date);
+  };
 
   return (
     <div className={styles.weatherContainer}>
-      {forecast && forecast.list && forecast.list.length > 0 ? (
-        forecast.list.map((item, index) => {
-          // Group data by day; assuming forecast is in 3-hour intervals, select one entry per day
-          const date = new Date(item.dt * 1000).toLocaleDateString();
-          const temp = Math.round(item.main.temp); // Current temperature
-          const precipitation = item.rain ? item.rain["1h"] : 0; // Precipitation in mm
-          const time = new Date(item.dt * 1000).toLocaleTimeString([], {
-            hour: "2-digit",
-            minute: "2-digit",
-          });
+      {Object.keys(groupedForecast).length > 0 ? (
+        Object.keys(groupedForecast).map((date) => {
+          const dayData = groupedForecast[date];
 
-          const weatherDescription = item.weather[0].description;
-          const precipitationProbability = item.pop
-            ? (item.pop * 100).toFixed(0)
-            : 0; // Convert to percentage, default to 0 if           const time = new Date(item.dt * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-
-          // Return JSX for each weather forecast entry
           return (
-            <WeatherCard
-              key={index}
-              date={date}
-              time={time}
-              temp={temp}
-              weatherDescription={weatherDescription}
-              icon={item.weather[0].icon}
-              precipitationProbability={precipitationProbability}
-            />
+            <div key={date}>
+              <div
+                className={styles.dayCard}
+                onClick={() => handleDayClick(date)}
+              >
+                <h3 styles={styles.date}>{date}</h3>
+              </div>
+              {expandedDay === date && (
+                <div className={styles.hourlyForecast}>
+                  {dayData.map((item, index) => {
+                    const time = new Date(item.dt * 1000).toLocaleTimeString(
+                      [],
+                      {
+                        hour: "2-digit",
+                        minute: "2-digit",
+                      }
+                    );
+                    const temp = Math.round(item.main.temp);
+                    const precipitationProbability = item.pop
+                      ? (item.pop * 100).toFixed(0)
+                      : 0;
+                    const weatherDescription = item.weather[0].description;
+                    const icon = item.weather[0].icon;
+                    return (
+                      <WeatherCard
+                        key={index}
+                        date={time} // Show time here
+                        temp={temp}
+                        weatherDescription={weatherDescription}
+                        icon={icon}
+                        precipitationProbability={precipitationProbability}
+                      />
+                    );
+                  })}
+                </div>
+              )}
+            </div>
           );
         })
       ) : (
@@ -42,6 +71,4 @@ const Weather = ({ forecast, weather }) => {
     </div>
   );
 };
-
-
 export default Weather;

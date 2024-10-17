@@ -1,69 +1,112 @@
-// WeatherInfo.module.scss
-
 .text {
-    display: flex;
-    justify-content: center; // Center horizontally
-    align-items: flex-start; // Align to the top
-    padding: 15px; // Reduced padding for mobile
-    border-radius: 12px; // Rounded corners
-    margin-top: 20px; // Margin above the weather box
+  display: flex;
+  justify-content: center; // Center horizontally
+  align-items: flex-start; // Align to the top
+  padding: 15px; // Reduced padding for mobile
+  border-radius: 12px; // Rounded corners
+  margin-top: 20px;
+  margin-left: 0; // Margin above the weather box
 }
-
-.weatherBox {
-    background-color: #ffffff; // White background for the weather box
-    border-radius: 12px; // Rounded corners
-    padding: 15px; // Reduced padding for mobile
-    max-width: 100%; // Full width for mobile
-    text-align: center; // Center text inside the box
+.weatherContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+h3 {
+  margin-bottom: 20px;
+  padding-left: 20px;
 }
 
 .location {
-    font-size: 1.5rem; // Font size for the location on mobile
-    margin-bottom: 10px; // Space below location
-    font-weight: bold; // Make location bold
+  font-size: 1.5rem; // Font size for the location on mobile
+  margin-bottom: 10px; // Space below location
+  font-weight: bold; // Make location bold
 }
 
 .weather {
-    margin-bottom: 15px; // Space below weather description
+  margin-bottom: 15px; // Space below weather description
 }
 
-.temp, .feelsLike, .cloudCover {
-    font-size: 1.2rem; // Font size for temperature and other info on mobile
-    margin: 5px 0; // Space between info lines
-    color: #00796b; // Teal color for temperatures
+.temp,
+.feelsLike,
+.cloudCover {
+  font-size: 1.2rem; // Font size for temperature and other info on mobile
+  margin: 5px 0; // Space between info lines
+  color: #00796b; // Teal color for temperatures
 }
 
 .description {
-    font-weight: bold; // Bold description text
+  font-weight: bold; // Bold description text
 }
 
 .error {
-    color: red; // Error message color
-    text-align: center; // Center the error message
+  color: red; // Error message color
+  text-align: center; // Center the error message
 }
 
 // Media query for larger screens (tablets and laptops)
 @media (min-width: 601px) {
-    .text {
-        padding: 20px; // Increased padding for larger screens
-    }
-    .weatherContainer{
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-    }
-    .weatherBox {
-        border: 1px solid black;
-        margin-left: 20px;
-        margin-bottom: 20px;
-        padding: 20px; // Increased padding for larger screens
-        max-width: 400px; // Limit width for a neat appearance on larger screens
-    }
+  .text {
+    padding: 20px; // Increased padding for larger screens
+  }
 
-    .location {
-        font-size: 2rem; // Larger font size for the location on larger screens
-    }
+  .dayCards {
+    display: flex; /* Use flexbox for layout */
+    justify-content: space-between; /* Space between cards */
+    overflow-x: auto;
+    margin-bottom: 20px;
 
-    .temp, .feelsLike, .cloudCover {
-        font-size: 1.5rem; // Font size for tempe
+    /* Allow horizontal scrolling if needed */
+  }
+  .weatherContainer {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+  }
+  .date {
+    background: white;
+    margin-bottom: 30px;
+    font-size: 15px;
+    margin-left: 1px !important;
+  }
+
+  .dayCard {
+    flex: 0 0 20%; /* Fixed width to ensure 5 cards fit in one line */
+    margin: 0 15px 20px; /* Optional margin for spacing */
+    padding: 10px;
+    background: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 80%;
+
+    cursor: pointer;
+    text-align: center;
+    transition: background 0.3s;
+
+    &:hover {
+      background: #e0e0e0; /* Change background on hover */
     }
+  }
+
+  .hourlyForecast {
+    margin-top: 10px;
+    padding: 10px;
+
+    margin-bottom: 20px;
+  }
+
+  .weatherBox {
+    margin-left: 20px;
+    margin-bottom: 40px;
+    padding: 20px; // Increased padding for larger screens
+    max-width: 400px; // Limit width for a neat appearance on larger screens
+  }
+
+  .location {
+    font-size: 2rem; // Larger font size for the location on larger screens
+  }
+
+  .temp,
+  .feelsLike,
+  .cloudCover {
+    font-size: 1.5rem; // Font size for tempe
+  }
 }
