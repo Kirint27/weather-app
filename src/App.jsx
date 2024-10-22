@@ -8,6 +8,7 @@ const App = () => {
   const [weather, setWeather] = useState(null);
   const [forecast, setForecast] = useState(null); // State for forecast data
   const [error, setError] = useState(null); // State for error handling
+  const [timeZone, setTimeZone] = useState(null); // State for the time zone
 
   return (
     <main>
@@ -16,11 +17,13 @@ const App = () => {
         setWeather={setWeather}
         setForecast={setForecast}
         setError={setError}
+        setTimeZone={setTimeZone} // Pass state setter for time zone
+
       />{" "}
       {/* Pass state setters */}
       {error && <p className="error">{error}</p>} {/* Display error message */}
       {weather && forecast && (
-        <Weather weather={weather} forecast={forecast} />
+        <Weather weather={weather} forecast={forecast} timeZone={timeZone} />
       )}{" "}
       {/* Pass both weather and forecast */}
     </main>

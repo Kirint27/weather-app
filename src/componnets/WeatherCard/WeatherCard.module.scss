@@ -14,7 +14,7 @@
   border-radius: 12px; // Rounded corners
   padding: 15px; // Reduced padding for mobile
   max-width: 100%;
-  margin-left: 1;
+
   margin-bottom: 20px; // Full width for mobile
   text-align: center; // Center text inside the box
 }
@@ -57,7 +57,7 @@
   }
   .weatherBox {
     border: 1px solid black;
-    margin-left: 20px;
+    margin-left: 10px;
     margin-bottom: 20px;
     padding: 20px; // Increased padding for larger screens
     max-width: 400px; // Limit width for a neat appearance on larger screens
